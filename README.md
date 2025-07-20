@@ -1,45 +1,67 @@
-# 🔧 Smart Fault Decision Agent – "When to Repair, Replace or Alert?"
+#  Smart Fault Decision Agent
 
-This project is a Machine Learning prototype developed for **Xempla**'s Decision Intelligence R&D internship. It simulates how intelligent agents can support fault classification and action recommendations in real-world systems like HVAC, manufacturing equipment, or smart buildings.
+### *“When to Repair, Replace, Alert or Ignore?”*
 
----
-
-## 🚀 Problem Statement
-
-**"When should a system be Repaired, Replaced, Alerted, or Ignored?"**  
-Using sensor inputs like temperature, vibration, pressure, and runtime hours, this agent learns to classify system health status and recommend the next action.
+> A prototype built for **Xempla’s Decision Intelligence R&D Internship** to showcase how intelligent agents can assist in real-time system fault classification and decision-making for industrial assets like HVACs, turbines, or smart devices.
 
 ---
 
-## 🧠 Model Overview
+## 📌 Problem Statement
 
-- **Input Features:**  
-  - `temperature`
-  - `vibration`
-  - `pressure`
-  - `runtime_hours`
+In smart maintenance systems, timely decisions can save millions.  
+This project answers a key question:  
+👉 **“Given sensor data, should we REPAIR, REPLACE, ALERT, or take NO_ACTION?”**
 
-- **Output Labels (Actions):**  
-  - `0 = NO_ACTION`  
-  - `1 = REPAIR`  
-  - `2 = REPLACE`  
-  - `3 = ALERT`
-
-- **Model Used:** Random Forest Classifier  
-- **Accuracy:** ~99% on synthetic validation data  
-- **Libraries:** `scikit-learn`, `pandas`, `matplotlib`, `joblib`
+The goal: Create a machine learning agent that mimics decision intelligence by interpreting key sensor readings and recommending the right maintenance strategy.
 
 ---
 
-## 📊 Sample Prediction
+## 🧠 Model Architecture
+
+| Feature         | Description                    |
+|-----------------|--------------------------------|
+| `temperature`   | Sensor temp reading (°C)       |
+| `vibration`     | Vibration magnitude (mm/s)     |
+| `pressure`      | Internal system pressure (psi) |
+| `runtime_hours` | Usage hours since last check   |
+
+**Output Labels:**
+
+| Label | Meaning     |
+|-------|-------------|
+| `0`   | NO_ACTION   |
+| `1`   | REPAIR      |
+| `2`   | REPLACE     |
+| `3`   | ALERT       |
+
+- 🧩 **Model:** Random Forest Classifier  
+- 📈 **Accuracy:** ~99% on synthetic test data  
+- 🧰 **Tech Stack:** `scikit-learn`, `pandas`, `joblib`, `matplotlib`
+
+---
+
+## 💡 How It Works
+
+1. Loads the trained ML model: `fault_decision_model.pkl`  
+2. Accepts real-time or test sensor inputs  
+3. Predicts the best next action based on historical patterns and decision logic
+
+---
+
+## ✅ Sample Prediction
 
 ```python
-Input Sample:
+Input:
 {
-    'temperature': 95,
-    'vibration': 8.5,
-    'pressure': 25,
-    'runtime_hours': 600
+  'temperature': 95,
+  'vibration': 8.5,
+  'pressure': 25,
+  'runtime_hours': 600
 }
 
-Predicted Action: REPAIR
+Output:
+Predicted Action → REPAIR
+```
+## 📸 Sample Output
+
+![Smart Fault Decision Agent Output](smart-fault-decision-agent.png)
